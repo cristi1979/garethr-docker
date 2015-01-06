@@ -168,8 +168,6 @@ class docker(
 
   validate_string($version)
   validate_re($::osfamily, '^(Debian|RedHat|Archlinux)$', 'This module only works on Debian and Red Hat based systems.')
-  validate_re($storage_driver, '^(aufs|devicemapper|btrfs|overlay|vfs)$', 'Valid values for storage_driver are aufs, devicemapper, btrfs, overlayfs, vfs.')
-  validate_re($dm_fs, '^(ext4|xfs)$', 'Only ext4 and xfs are supported currently for dm_fs.')
   validate_bool($manage_kernel)
   validate_bool($manage_package)
 
