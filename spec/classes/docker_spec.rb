@@ -84,7 +84,7 @@ describe 'docker', :type => :class do
           :osfamily => osfamily,
         } }
         service_config_file = '/etc/conf.d/docker'
-        storage_config_file = '/etc/default/docker'
+        storage_config_file = '/etc/conf.d/docker'
       end
 
       it { should compile.with_all_deps }
