@@ -59,7 +59,7 @@ describe 'docker', :type => :class do
           :operatingsystemrelease => '6.5'
         } }
         service_config_file = '/etc/sysconfig/docker'
-        storage_config_file = '/etc/default/docker-storage'
+        storage_config_file = '/etc/sysconfig/docker-storage'
 
         context 'with proxy param' do
           let(:params) { {'proxy' => 'http://127.0.0.1:3128' } }
