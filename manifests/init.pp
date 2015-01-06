@@ -169,6 +169,14 @@ class docker(
   validate_re($::osfamily, '^(Debian|RedHat|Archlinux)$', 'This module only works on Debian and Red Hat based systems.')
   validate_bool($manage_kernel)
   validate_bool($manage_package)
+    if ($dm_loopdatasize or $dm_loopmetadatasize) and ($dm_datadev or $dm_metadatadev) {
+    fail('You should provide parameters only for loop lvm or direct lvm, not both.')
+  }
+
+  if ($dm_datadev and !$dm_metadatadev) or (!$dm_datadev and $dm_metadatadev) {
+    fail('You need to provide both $dm_datadev and $dm_metadatadev parameters for direct lvm.')
+  }
+
   class { 'docker::install': } ->
   class { 'docker::config': } ~>
   class { 'docker::service': } ->
